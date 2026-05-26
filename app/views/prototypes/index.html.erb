@@ -4,34 +4,39 @@
     <% if user_signed_in? %>
       <div class="greeting">
         こんにちは、
-        <%= link_to "#{current_user['name']}さん", root_path, class: :greeting__link %>
+        <%= link_to "#{current_user.name}さん",
+        user_path(current_user.id),
+        class: :greeting__link %>
       </div>
     <% end %>
 
     <div class="card__wrapper">
-      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+
       <% @prototypes.each do |prototype| %>
-      <div class="card">
 
-      <%= link_to prototype_path(prototype.id) do %>
+        <div class="card">
 
-        <%= image_tag prototype.image, class: "card__img" %>
+          <%= link_to image_tag(prototype.image,
+          class: :card__img),
+          prototype_path(prototype.id) %>
 
-        <h3 class="card__title">
-          <%= prototype.title %>
-        </h3>
+          <%= link_to prototype.title,
+          prototype_path(prototype.id),
+          class: :card__title %>
+
+          <p class="card__summary">
+            <%= prototype.catch_copy %>
+          </p>
+
+          <%= link_to "by #{prototype.user.name}",
+          user_path(prototype.user.id),
+          class: :card__user %>
+
+        </div>
 
       <% end %>
 
-      <p class="card__summary">
-        <%= prototype.catch_copy %>
-      </p>
-
     </div>
 
-
-
-
-<% end %>
-
+  </div>
 </main>
