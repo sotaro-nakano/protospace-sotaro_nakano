@@ -10,7 +10,28 @@
 
     <div class="card__wrapper">
       <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <% @prototypes.each do |prototype| %>
+      <div class="card">
+
+      <%= link_to prototype_path(prototype.id) do %>
+
+        <%= image_tag prototype.image, class: "card__img" %>
+
+        <h3 class="card__title">
+          <%= prototype.title %>
+        </h3>
+
+      <% end %>
+
+      <p class="card__summary">
+        <%= prototype.catch_copy %>
+      </p>
+
     </div>
 
-  </div>
+
+
+
+<% end %>
+
 </main>
