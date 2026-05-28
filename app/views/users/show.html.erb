@@ -1,6 +1,5 @@
 <main class="main">
   <div class="inner">
-
     <div class="user__wrapper">
 
       <h2 class="page-heading">
@@ -8,9 +7,7 @@
       </h2>
 
       <table class="table">
-
         <tbody>
-
           <tr>
             <th class="table__col1">名前</th>
             <td class="table__col2"><%= @user.name %></td>
@@ -18,11 +15,19 @@
 
           <tr>
             <th class="table__col1">プロフィール</th>
-            <td class="table__col2">よろしくお願いします。</td>
+            <td class="table__col2"><%= @user.profile %></td>
           </tr>
 
-        </tbody>
+          <tr>
+            <th class="table__col1">所属</th>
+            <td class="table__col2"><%= @user.occupation %></td>
+          </tr>
 
+          <tr>
+            <th class="table__col1">役職</th>
+            <td class="table__col2"><%= @user.position %></td>
+          </tr>
+        </tbody>
       </table>
 
       <h2 class="page-heading">
@@ -30,29 +35,9 @@
       </h2>
 
       <div class="user__card">
-
-        <% @prototypes.each do |prototype| %>
-
-          <div class="card">
-
-            <%= link_to image_tag(prototype.image, class: :card__img ),
-            prototype_path(prototype.id) %>
-
-            <%= link_to prototype.title,
-            prototype_path(prototype.id),
-            class: :card__title %>
-
-            <p class="card__summary">
-              <%= prototype.catch_copy %>
-            </p>
-
-          </div>
-
-        <% end %>
-
+        <%= render partial: "prototypes/prototype", collection: @prototypes %>
       </div>
 
     </div>
-
   </div>
 </main>

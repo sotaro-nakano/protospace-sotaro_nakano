@@ -1,37 +1,12 @@
 <main class="main">
   <div class="inner">
-    <div class="form__wrapper">
 
+    <div class="form__wrapper">
       <h2 class="page-heading">プロトタイプ編集</h2>
 
-      <%= form_with model: @prototype, local: true do |f| %>
-
-        <div class="field">
-          <%= f.label :title, "プロトタイプ名" %><br />
-          <%= f.text_field :title, class: :form__text %>
-        </div>
-
-        <div class="field">
-          <%= f.label :catch_copy, "キャッチコピー" %><br />
-          <%= f.text_area :catch_copy, class: :form__text %>
-        </div>
-
-        <div class="field">
-          <%= f.label :concept, "コンセプト" %><br />
-          <%= f.text_area :concept, class: :form__text %>
-        </div>
-
-        <div class="field">
-          <%= f.label :image, "画像" %><br />
-          <%= f.file_field :image %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "保存する", class: :form__btn %>
-        </div>
-
-      <% end %>
+      <%= render partial: "form", locals: { prototype: @prototype } %>
 
     </div>
+
   </div>
 </main>
